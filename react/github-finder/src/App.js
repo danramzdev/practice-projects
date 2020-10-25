@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
 import Search from "./components/users/Search";
 import { Alert } from "./components/layout/Alert";
+import User from "./components/users/User";
 
 // Pages
 import About from "./components/pages/About";
@@ -17,10 +18,12 @@ import "./App.css";
 class App extends React.Component {
   state = {
     users: [],
+    user: {},
     loading: false,
     alert: null,
   };
 
+  // Serach Github users
   searchUsers = async (query) => {
     this.setState({ loading: true });
 
@@ -30,6 +33,20 @@ class App extends React.Component {
 
     this.setState({
       users: response.data.items,
+      loading: false,
+    });
+  };
+
+  // Search single Github user
+  getUser = async (username) => {
+    this.setState({ loading: true });
+
+    const response = await axios.get(
+      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    );
+
+    this.setState({
+      user: response.data,
       loading: false,
     });
   };
@@ -78,6 +95,18 @@ class App extends React.Component {
                       users={this.state.users}
                     />
                   </Fragment>
+                )}
+              />
+              <Route
+                exact
+                path="/user/:login"
+                render={(props) => (
+                  <User
+                    {...props}
+                    getUser={this.getUser}
+                    user={this.state.user}
+                    loading={this.state.loading}
+                  />
                 )}
               />
               <Route exact path="/about" component={About} />
