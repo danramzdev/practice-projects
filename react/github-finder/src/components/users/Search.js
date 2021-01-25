@@ -36,8 +36,11 @@ function Search(props) {
           className="btn btn-dark btn-block"
         />
       </form>
-      {props.showClear && (
-        <button className="btn btn-light btn-block" onClick={props.clearUsers}>
+      {githubContext.users.length > 0 && (
+        <button
+          className="btn btn-light btn-block"
+          onClick={githubContext.clearUsers}
+        >
           Clear
         </button>
       )}
@@ -46,8 +49,6 @@ function Search(props) {
 }
 
 Search.protoTypes = {
-  clearUsers: PropTypes.func.isRequired,
-  showClear: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired,
 };
 
