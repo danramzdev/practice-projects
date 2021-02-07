@@ -1,4 +1,5 @@
 const express = require('express');
+const connectDB = require('./config/db');
 
 // Constants
 const PORT = process.env.PORT || 5000;
@@ -10,6 +11,9 @@ const ContactsController = require('./controllers/ContactsController');
 
 // Init Express
 const app = express();
+
+// Connect Database
+connectDB();
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the jungle!' });
