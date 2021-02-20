@@ -1,10 +1,10 @@
-const router = require('express').Router();
+const router = require('express').Router()
 
-module.exports = (controller) => {
+module.exports = controller => {
   // @route POST /api/auth
   // @desc Register auth
   // @access Public
-  router.post('/', controller.postAuth);
+  router.post('/', controller.postAuth)
 
-  return router;
-};
+  return router
+}

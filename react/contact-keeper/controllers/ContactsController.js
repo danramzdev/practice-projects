@@ -3,8 +3,8 @@ class ContactsController {
   // @desc Register contact
   // @access Public
   static postContact(req, res) {
-    res.send('Contacts Post');
+    res.send('Contacts Post')
   }
 }
 
-module.exports = ContactsController;
+module.exports = ContactsController

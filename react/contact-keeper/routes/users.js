@@ -1,10 +1,11 @@
-const router = require('express').Router();
+const router = require('express').Router()
+const userValidator = require('../utils/validators/user')
 
-module.exports = (controller) => {
+module.exports = controller => {
   // @route POST /api/users
   // @desc Register user
   // @access Public
-  router.post('/', controller.postUser);
+  router.post('/', userValidator, controller.postUser)
 
-  return router;
-};
+  return router
+}

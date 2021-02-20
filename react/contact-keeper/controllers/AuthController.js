@@ -3,8 +3,8 @@ class AuthController {
   // @desc Register auth
   // @access Public
   static postAuth(req, res) {
-    res.send('Auth Post');
+    res.send('Auth Post')
   }
 }
 
-module.exports = AuthController;
+module.exports = AuthController
