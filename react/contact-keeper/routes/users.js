@@ -5,7 +5,7 @@ module.exports = controller => {
   // @route POST /api/users
   // @desc Register user
   // @access Public
-  router.post('/', userValidator, controller.postUser)
+  router.post('/', userValidator, controller.createUser)
 
   return router
 }
